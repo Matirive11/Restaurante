@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta Cliente</title>
+<style>
+    form{
+background-color: rgb(0, 255, 255);
+width: 50%;
+margin: 0 auto;
+    }
+</style>
+</head>
+<body>
+    <form action="alta_cliente2.php" method="post" enctype="multipart/form-data">
+      <br>
+      <fieldset> <legend> Cliente </legend> <input name="nom_Cliente" placeholder="nombre del Cliente"
+
+          type="text"><br>
+        <br>
+        <input name="Apellido" placeholder="Apellido" step="0.01" required="" type="text"><br>
+        <br>
+        <input name="DNI" placeholder="DNI" step="0.01" required="" type="number"><br>
+        <br>
+        <input name="Correo_Electronico" placeholder="Correo Electronico" step="0.01" required=""><br>
+        <br>
+        <input name="Enviar" value="enviar" type="submit"><br>
+      </fieldset>
+    </form>
+  </body>
+</html>

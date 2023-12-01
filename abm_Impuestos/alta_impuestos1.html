@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear impuestos</title>
+<style>
+    form{
+background-color: rgb(0, 255, 255);
+width: 50%;
+margin: 0 auto;
+    }
+</style>
+  </head>
+  <body>
+    <form action="alta_impuestos2.php" method="post" enctype="multipart/form-data">
+      
+      <fieldset> <legend> Impuestos </legend> <input name="nom_impuesto" placeholder="nombre del impuesto"
+
+          type="text"><br>
+        <br>
+        <input name="porcentaje" placeholder="porcentaje" step="0.01" required="" type="number"><br>
+        <br>
+        <input name="Enviar" value="enviar" type="submit"><br>
+      </fieldset>
+    </form>
+  </body>
+</html>
