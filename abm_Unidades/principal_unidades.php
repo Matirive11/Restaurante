@@ -3,48 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal Imagenes</title>
+    <title>Principal Unidades</title>
     <link rel="stylesheet" href="../css/estilo.css">
     <style>
         td{
             border:solid 2px #003366;
             margin: 0 auto;
+
         }
     </style>
 </head>
 <body>
+    <?php
+    ?>
     <section>
-    <button><a href="alta_imagenes1.php">Crear Imagen</a></button>
+    <button><a href="alta_unidades1.html">Crear unidades </a></button>
     </section>
     <table>
+
         <thead>
             <tr>
                 <td>Identificador</td>
-                <td>Nombre de la imagen</td>
-                <td>Imagen</td>
+                <td>Descripcion</td>
                 <td>Acciones</td>
             </tr>
         </thead>
         <tbody>
             <?php
             include "../conexion.php";
-            $sql = "SELECT * from IMAGENES order by ID_IMAGENES desc";
+            $sql = "SELECT * from UNIDADES_MEDIDAS order by ID_UNIDADES_MEDIDAS desc";
             $resultado = mysqli_query($conexion,$sql);
-            while ($datos = mysqli_fetch_assoc($resultado)) {
-               
-                $id = $datos['ID_IMAGENES'];
-                $Nombre = $datos['NOMBRE'];
-                $Foto = $datos['FOTO'];
-                //var_dump($resultado);
-                
-
-
+           // var_dump($resultado);
+            while ($datos = mysqli_fetch_array($resultado)) {
+                $id = $datos['ID_UNIDADES_MEDIDAS'];
+                $DESCRIPCION = $datos['DESCRIPCION'];
                 echo "<tr>";
-                echo "<td>".$id."</td>";
-                echo "<td>".$Nombre."</td>";
-                echo "<td><img src='../img/".$Foto."' alt='Imagen' width='150'></td>";
                 echo "<td>";
-                echo ' <a id="boton1" class="mbri-trash mbr-iconfont-btn" href="baja_imagenes.php?ID_IMAGENES='.$id.'" title="borrar imagen" onClick="return confirm(\'¿Estás seguro de borrar la imagen?\')">
+                echo $id;
+                echo "</td>";
+                echo "<td>";
+                echo $DESCRIPCION;
+                echo "</td>";
+                echo "<td>";
+                
+                
+                echo ' <a id="boton1" class="mbri-trash mbr-iconfont-btn" href="baja_unidades.php?ID_UNIDADES_MEDIDAS='.$id.'"title="borrar
+                 unidades" onClick="confirm("borrar la unidad?")">
+
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <style>svg{fill:#9d2}</style>
                 <path d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2
@@ -54,9 +59,11 @@
                  2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.
                  8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"/>
                  </svg>
+                 
                 </a>';
-                echo '<a id="boton2" class="mbri-trash mbr-iconfont mbr-iconfont-btn" href="modificar_imagenes1.php?ID_IMAGENES='.$id.'"
-                title="modificar componente"> 
+
+                echo '<a id="boton2" class="mbri-trash mbr-iconfont mbr-iconfont-btn" href="modificar_unidades1.php?ID_UNIDADES_MEDIDAS='.$id.'"
+                title="modificar Unidades"> 
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                 <style>svg{fill:#9d2}</style>
                 <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344
@@ -66,13 +73,14 @@
                 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.
                 9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"/>
                 </svg>
+                
                 ';
-                echo "</td>";
                 echo "</tr>";
             }
-            ?>
+                ?>
+
         </tbody>
     </table>
-   
+    
 </body>
 </html>

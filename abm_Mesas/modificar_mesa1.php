@@ -22,13 +22,52 @@
         $datos = mysqli_fetch_array($resultado);
         ?>
         <fieldset>
-            <legend>Crear mesa</legend> <br>
-            <input type="text" name="num_mesa" placeholder="Nombre del ingrediente" value="<?php echo $datos['NOMBRE']; ?>">
+            <legend>Mesas</legend>
+
+            <select name="ubicacion" id="ubicacion" placeholder="Seleccione la ubicación"> 
+                <option value="0">-- Seleccione la ubicación --</option>
+                <option value="Lado inferior Izquierdo">Lado inferior Izquierdo</option>
+                <option value="Frente">Frente</option>
+                <option value="Asotea">Asotea</option>
+                <option value="Lado inferior derecho">Lado inferior derecho</option>
+            </select>
             <br>
-            <input type="text" name="ubicacion" placeholder="Ubicacion" value="<?php echo $datos['Stock']; ?>">
+            <select name="nom_mozo" id="nom_mozo">
+                <option value="">-- Seleccione el mozo --</option>
+                <?php
+                include "../conexion.php";
+                $sql = "SELECT MOZO.ID_MOZO, MOZO.NOMBRE FROM MESA JOIN MOZO ON MESA.ID_MOZO  = MOZO.ID_MOZO ";
+                $resultado = mysqli_query($conexion, $sql);
+                while ($datos = mysqli_fetch_array($resultado)) {
+                    $idm1 = $datos['ID_MOZO'];
+                    $nombre = $datos['NOMBRE'];
+                    echo  "<option value='$idm1'>$nombre</option>";
+                }
+                $sql2 = "SELECT DISTINCT MOZO.ID_MOZO, NOMBRE FROM MOZO";
+                $resultado = mysqli_query($conexion, $sql2);
+                while ($datos2 = mysqli_fetch_array($resultado)) {
+                    $idm2 = $datos2['ID_MOZO'];
+                    $nombre = $datos2['NOMBRE'];
+                    echo "<option value='$idm2'>$nombre</option>";
+                }
+                ?>
+            </select>
             <br>
-            <input type="submit" value="Crear ingrediente">
-            <input type="hidden" name="identificador" value="<?php echo $id; ?>">
+            <label for="Capacidad">Capacidad</label>
+            <select name="capa" id="">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <br>
+            <input name="Enviar" value="enviar" type="submit"><br>
         </fieldset>
     </form>
 </body>

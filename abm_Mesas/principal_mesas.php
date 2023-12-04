@@ -17,35 +17,40 @@
         <thead>
             <tr>
                 <td>Identificador</td>
-                <td>Numero de mesa</td>
                 <td>Ubicacion</td>
+                <td>Nombre del Mozo</td>
+                <td>Capacidad</td>>
                 <td>Acciones</td>
             </tr>
         </thead>
         <tbody>
             <?php
             include "../conexion.php";
-            $sql = "SELECT * from MESA order by ID_MESA desc";
+            $sql = "SELECT MESA.ID_MESA, MESA.UBICACION, MOZO.NOMBRE, MESA.CAPACIDAD FROM MESA INNER JOIN MOZO ON MESA.ID_MOZO = MOZO.ID_MOZO ORDER BY MESA.ID_MESA";
             $resultado = mysqli_query($conexion,$sql);
             //var_dump($resultado);
             while ($datos = mysqli_fetch_array($resultado)) {
                 $id = $datos['ID_MESA'];
-                $NUMERO = $datos['NUMERO'];
-                $ubicacion = $datos['ubicacion'];
+                $ubicacion = $datos['UBICACION'];
+                $mozo = $datos['NOMBRE'];
+                $capacidad = $datos['CAPACIDAD'];
                 echo "<tr>";
                 echo "<td>";
                 echo $id;
                 echo "</td>";
                 echo "<td>";
-                echo $NUMERO;
-                echo "</td>";
-                echo "<td>";
                 echo $ubicacion;
                 echo "</td>";
                 echo "<td>";
+                echo $mozo;
+                echo "</td>";
+                echo "<td>";
+                echo $capacidad;
+                echo "</td>";
+                echo "<td>";
                 
                 
-                echo ' <a id="boton1" class="mbri-trash mbr-iconfont-btn" href="baja_menu.php?ID_MENU='.$id.'"title="borrar
+                echo ' <a id="boton1" class="mbri-trash mbr-iconfont-btn" href="baja_mesa.php?ID_MESA='.$id.'"title="borrar
                  componente" onClick="confirm("borrar el menu?")">
 
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
@@ -60,8 +65,8 @@
                  
                 </a>';
 
-                echo '<a id="boton2" class="mbri-trash mbr-iconfont mbr-iconfont-btn" href="modificacion_menu1.php?ID_MENU='.$id.'"
-                title="borrar componente"> 
+                echo '<a id="boton2" class="mbri-trash mbr-iconfont mbr-iconfont-btn" href="modificar_mesa1.php?ID_MESA='.$id.'"
+                title="modificar componente"> 
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                 <style>svg{fill:#9d2}</style>
                 <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344

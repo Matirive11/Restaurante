@@ -1,7 +1,9 @@
 <?php
 include "../conexion.php";
 $nombre = $_POST['nombre_foto'];
-$Foto = addslashes(file_get_contents($_FILES['Foto']['tmp_name']));
+$Foto = $_FILES['Foto']['name'];
+$foto_tmp =$_FILES['Foto']['tmp_name'];
+move_uploaded_file($foto_tmp, "../img/".$Foto);
 
 echo "<h2> El resultado es:".$nombre."</h2>";
 echo "<h2> El resultado es:".$Foto."</h2>";
